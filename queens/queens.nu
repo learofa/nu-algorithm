@@ -21,11 +21,11 @@ def gen-queens [qs:list<int>, width:int] {
 
     $next
     | each { |x| $qs | append $x }
-    | each { |it| gen-queen $it $width }
+    | each { |it| gen-queens $it $width }
     | where { |e| $e | is-not-empty }
     | flatten
 }
 
 export def get-all-queens [n:int] {
-    1..$n | par-each { gen-queen [$in] $n } | flatten
+    1..$n | par-each { gen-queens [$in] $n } | flatten
 }
