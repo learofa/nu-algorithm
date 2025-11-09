@@ -1,13 +1,13 @@
-export def get-next-col [qs:list<int>, width:int] {
+def get-next-col [qs:list<int>, width:int] {
     let len = $qs | length
     $qs
     | enumerate
-    | par-each  {|x| 1..$width
+    | each  {|x| 1..$width
         | where {$in not-in [$x.item ($x.item - ($len - $x.index)) ($x.item + ($len - $x.index))]} }
     | reduce {|x, acc| $acc | where { $in in $x } }
 }
 
-def gen-queen [qs:list<int>, width:int] {
+def gen-queens [qs:list<int>, width:int] {
     let len = $qs | length
 
     if ($len == $width) {
@@ -26,6 +26,6 @@ def gen-queen [qs:list<int>, width:int] {
     | flatten
 }
 
-export def init-queen [n:int] {
+export def get-all-queens [n:int] {
     1..$n | par-each { gen-queen [$in] $n } | flatten
 }
