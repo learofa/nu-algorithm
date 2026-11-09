@@ -34,7 +34,7 @@ def get-sentence [
 def parse-sentence [ result: record ] {
     let data: record = $result.data
     let content: string = $data | get content
-    let origin: string = $data | get origin
+    let origin: record = $data | get origin
     let title: string = $origin.title
     let dynasty: string = $origin.dynasty
     let author: string = $origin.author

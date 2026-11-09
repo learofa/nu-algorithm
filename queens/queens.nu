@@ -11,6 +11,7 @@ def gen-queens [qs:list<int>, width:int] {
     let len = $qs | length
 
     if ($len == $width) {
+        print $"queens: ($qs)"
         return [ $qs ]
     }
 
